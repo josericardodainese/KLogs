@@ -1,0 +1,16 @@
+<app-toolbar  (menuState)="sidenav.toggle()"
+              (toolbarMenuStateOut)="toolbarMenuHandle()"
+              (nameSpaceStateOut)="reloadMenuByNameSpace()"
+              (keydown.escape)="closeSideNav()"></app-toolbar>
+<mat-sidenav-container  class="side-nav-container" (backdropClick)="closeSideNav()">
+  <mat-sidenav #sidenav mode="side" disableClose>
+    <app-sidenav (menuStateOut)="sidenav.toggle()"
+                 [shouldGetMenuListIn]="shouldGetMenuList"
+                 (idMicroServiceOut)="getLogsFromIdMicroService($event)"
+                 (shouldGetMenuListOut)="setShouldGetMenuList($event)">
+    </app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content (click)="closeSideNav()">
+    <app-detail [logDataIn]="logData"  [isLoadingIn]="isLoading"></app-detail>
+  </mat-sidenav-content>
+</mat-sidenav-container>

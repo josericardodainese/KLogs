@@ -1,0 +1,24 @@
+.active-list-item {
+  color: #3F51B5 !important; /* Note: You could also use a custom theme */
+  font-weight: bold;
+}
+.side-nav-container {
+  display: flex;
+}
+
+.menu-active {
+  background-color: blueviolet;
+  color: white;
+}
+
+.side-nav-container .add_to_favorite {
+  cursor: pointer;
+  color: #98c379;
+  font-weight: bold;
+}
+
+.side-nav-container .remove_from_favorite {
+  cursor: pointer;
+  color: #e06c75;
+  font-weight: bold;
+}

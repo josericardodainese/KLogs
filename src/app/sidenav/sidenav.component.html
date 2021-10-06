@@ -1,0 +1,24 @@
+<div class="side-nav-container">
+  <mat-list>
+    <div mat-subheader>Favorite Application </div>
+    <mat-list-item
+      *ngFor="let itemMenu of menuFavoriteList">
+      <mat-icon class="remove_from_favorite" mat-list-icon (click)="removeFavoriteList(itemMenu)">remove_circle_outline</mat-icon>
+      <div  mat-line
+            style="cursor: pointer"
+            (click)="showDetail(itemMenu)">{{itemMenu}}
+      </div>
+    </mat-list-item>
+
+    <div mat-subheader>Applications </div>
+    <mat-list-item
+      *ngFor="let itemMenu of menuList">
+      <mat-icon class="remove_from_favorite" mat-list-icon *ngIf="isFavorite(itemMenu.metadata.name)" (click)="removeFavoriteList(itemMenu.metadata.name)">remove_circle_outline</mat-icon>
+      <mat-icon class="add_to_favorite" mat-list-icon *ngIf="!isFavorite(itemMenu.metadata.name)" (click)="addFavoriteList(itemMenu.metadata.name)">add</mat-icon>
+      <div  mat-line
+            style="cursor: pointer"
+            (click)="showDetail(itemMenu.metadata.name)">{{itemMenu.metadata.name}}
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

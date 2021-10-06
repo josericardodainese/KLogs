@@ -1,0 +1,12 @@
+{
+  "dest": "dist/installers/",
+  "icon": "build/icon.ico",
+  "productName": "KLogs",
+  "description": "App Para Visualizar Logs de Aplicações Num Cluster Kubernetes",
+  "categories": [
+    "Utility"
+  ],
+  "lintianOverrides": [
+    "changelog-file-missing-in-native-package"
+  ]
+}

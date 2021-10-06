@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <button mat-icon-button aria-label="Open Menu" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>KLogs</span>
+  <span class="app-spacer"></span>
+
+  <!--  icones do lado direito da toolbar -->
+
+  <div class="app-mat-toolbar-options">
+    <button mat-stroked-button
+            [color]="(selectedNamespace != 'Selecione Um NameSpace') ? 'primary' : 'warn'"
+            [matMenuTriggerFor]="nameSpaceMenu">{{selectedNamespace}}</button>
+    <mat-menu #nameSpaceMenu="matMenu">
+      <button mat-menu-item *ngFor="let namespace of nameSpaceList" (click)="chageNameSpace(namespace.metadata.name)" >{{namespace.metadata.name}}</button>
+    </mat-menu>
+
+    <button mat-icon-button class="favorite-icon" aria-label="Settings" (click)="openSettingsDialog()">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+  <!--  icones do lado direito da toolbar -->
+
+</mat-toolbar>

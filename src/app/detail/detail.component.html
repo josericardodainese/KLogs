@@ -1,0 +1,9 @@
+<div class="detail-container">
+  <div class="detail-container-log" *ngIf="logDataIn.length > 0">
+    <code class="app-log" highlight-js [lang]="'log'">
+      <pre  *ngFor="let line of logDataIn">{{line}}</pre>
+    </code>
+  </div>
+  <img *ngIf="logDataIn.length == 0" src="assets/images/logo.png" alt="KLogs Logo" class="toolbar-logo-img">
+  <mat-spinner *ngIf="isLoadingIn" diameter="20" class="app-mat-spinner"></mat-spinner>
+</div>
