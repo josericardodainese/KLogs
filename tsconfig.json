@@ -22,7 +22,6 @@
     ],
     "strictPropertyInitialization": false
   },
-  "include": ["node_modules/angular-prism"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

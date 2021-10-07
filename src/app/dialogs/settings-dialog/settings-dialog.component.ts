@@ -32,7 +32,7 @@ export class SettingsDialogComponent implements OnInit {
 
     this.settingsForm = this.formBuilder.group({
       clusterRemoteAddress: [settings ? settings.clusterRemoteAddress : null , [Validators.required]],
-      nameSpace: [settings ? settings.nameSpace : null, Validators.required],
+      nameSpace: [settings ? settings.nameSpace : 'default', Validators.required],
       authToken: [settings ? settings.authToken : null, Validators.required]
     });
   }

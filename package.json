@@ -1,15 +1,17 @@
 {
   "name": "klogs",
-  "version": "0.0.1",
+  "version": "0.0.1-beta",
   "main": "app.ts",
-  "description": "App Para Visualizar Logs de Aplicações Num Cluster Kubernetes",
+  "description": "App para visualizar logs de aplicações em namespaces de um cluster Kubernetes",
   "author": "Jose Ricardo Dainese <josericardodainese@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "ng build Klogs --base-href ./",
+    "build:prod": "npm run build -- -c production",
     "ng": "ng",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
+    "start": "ng build --base-href ./ && electron-forge start",
+    "package": "npm run build:prod && electron-forge package",
+    "make": "npm run package && electron-forge make",
     "release": "electron-forge publish"
   },
   "private": true,
@@ -42,6 +44,10 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.61",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.61",
+    "@electron-forge/publisher-github": "^6.0.0-beta.61",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.61",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "browser-sync": "^2.27.5",
@@ -60,16 +66,32 @@
       "packagerConfig": {
         "name": "KLogs",
         "executableName": "klogs",
-        "icon": "buils/icon",
+        "icon": "build/icon.icns",
         "extraResource": [
-          "build"
+          "build",
+          "dist"
+        ]
+      },
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "dmg"
+        ],
+        "linux": [
+          "deb",
+          "rpm",
+          "zip"
         ]
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "klogs"
+            "name": "klogs",
+            "iconUrl": "build/icon.ico",
+            "exe": "klogs.exe"
           }
         },
         {
@@ -80,11 +102,19 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "config": {
+            "icon": "build/icons"
+          }
         },
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "icon": "build/icon_512x512@2x.png"
+          }
         }
       ],
       "publishers": [
@@ -95,6 +125,7 @@
               "owner": "josericardodainese",
               "name": "klogs"
             },
+            "authToken": "",
             "draft": true
           }
         }

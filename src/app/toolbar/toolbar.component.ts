@@ -15,7 +15,7 @@ export class ToolbarComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService,
               private service: MicroserviceService) { }
 
-  selectedNamespace: string = '';
+  selectedNamespace: string = 'default';
   nameSpaceList: itemMenu[];
   settings: Settings;
 
