@@ -14,3 +14,21 @@ kubectl config view -o jsonpath="{.clusters[?(@.name==\"docker-desktop\")].clust
 ```shell
 kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.io/service-account\.name']=='default')].data.token}" | base64 -d
 ```
+
+### Home
+![image](resources/home-screen.png)
+
+### Screen With Menu Opened
+>Screen that show the menu opened with the list of pods in the selected namespace in toolbar beside of settings icon, when we select an item in the menu the sidebar closes and the log of the pod selected shows.
+
+![image](resources/menu-opened-screen.png)
+
+### Screen With Toolbar Namespaces Menu Opened
+>Screen that show the menu in the toolbar opened with the list of namespaces in the cluster, when we select the namespace the sidebar open and show the list of pods that belongs the namespace selected.
+
+![image](resources/menu-toolbar-opened-screen.png)
+
+### Screen Settings
+>Screen that show the settings and configurations to connect to the cluster
+
+![image](resources/settings-screen.png)
