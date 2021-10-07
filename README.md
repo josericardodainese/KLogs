@@ -28,7 +28,12 @@ kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.i
 
 ![image](resources/menu-toolbar-opened-screen.png)
 
-### Screen Settings
+### Screen Log View
 >Screen that show the settings and configurations to connect to the cluster
+
+![image](resources/logs-view-screen.png)
+
+### Screen Settings
+>Screen that show the log view of pod selected
 
 ![image](resources/settings-screen.png)
