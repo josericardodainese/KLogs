@@ -2,7 +2,7 @@ const {app, BrowserWindow} = require('electron')
 const url = require("url");
 const path = require("path");
 
-let mainWindow: any;
+let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -42,32 +42,3 @@ app.on('activate', function () {
 })
 
 app.commandLine.appendSwitch('ignore-certificate-errors');
-
-/***
- * Code That Save Log File
- */
-
-const { writeFile } = require('fs');
-const { ipcMain, dialog } = require('electron');
-
-
-const onRendererSalvarLogFile = async (event: any, mensagem: any) => {
-  const conteudoDoArquivo = mensagem;
-
-  const { filePath, canceled } = await dialog.showSaveDialog();
-
-  if(canceled) {
-    event.reply('main/salvar_arquivo', { status: 400, msg: 'Usuário cancelou o salvamento do arquivo' })
-    return false;
-  }
-
-  writeFile(filePath, conteudoDoArquivo, 'utf-8', function(err: any, result: any) {
-    console.log(err, result);
-    console.log(filePath);
-    event.reply('main/salvar_log_file', { status: 200, msg: filePath })
-  });
-
-  return;
-};
-
-ipcMain.on('renderer/salvar_log_file', onRendererSalvarLogFile);

@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-
-// Código do Electron
-import {ipcRenderer} from "electron";
-
+import {MicroserviceService} from "../services/microservice.service";
 
 @Component({
   selector: 'app-detail',
@@ -17,7 +14,4 @@ export class DetailComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {}
 
-  downloadLogFile(logDataIn: string[]) {
-    // ipcRenderer.send('renderer/salvar_log_file', logDataIn);
-  }
 }
