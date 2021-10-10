@@ -14,4 +14,7 @@ export class DetailComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {}
 
+  downloadLogFile(logDataIn: string[]) {
+    console.log(logDataIn)
+  }
 }

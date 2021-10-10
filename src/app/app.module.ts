@@ -15,17 +15,18 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
-import { SettingsDialogComponent } from './dialogs/settings-dialog/settings-dialog.component';
+import {SettingsDialogComponent} from './dialogs/settings-dialog/settings-dialog.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { SnackbarComponent } from './dialogs/snackbar/snackbar.component';
+import {SnackbarComponent} from './dialogs/snackbar/snackbar.component';
 import {HighlightJsModule} from "ngx-highlight-js";
 import {MatMenuModule} from "@angular/material/menu";
-import { FilterPipe } from './sidenav/filter.pipe';
+import {FilterPipe} from './sidenav/filter.pipe';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -37,28 +38,29 @@ import { FilterPipe } from './sidenav/filter.pipe';
     SnackbarComponent,
     FilterPipe
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatSidenavModule,
-        MatListModule,
-        HttpClientModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatInputModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatSnackBarModule,
-        HighlightJsModule,
-        MatMenuModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    HighlightJsModule,
+    MatMenuModule,
+    MatProgressBarModule
+  ],
   providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
