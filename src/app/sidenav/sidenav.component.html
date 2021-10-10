@@ -1,4 +1,11 @@
 <div class="side-nav-container">
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" [(ngModel)]="filterTerm">
+    <button *ngIf="filterTerm" matSuffix mat-icon-button aria-label="Clear" (click)="filterTerm=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
   <mat-list>
     <div mat-subheader>Favorite Application </div>
     <mat-list-item
@@ -12,7 +19,7 @@
 
     <div mat-subheader>Applications </div>
     <mat-list-item
-      *ngFor="let itemMenu of menuList">
+      *ngFor="let itemMenu of menuList  | filter: filterTerm">
       <mat-icon class="remove_from_favorite" mat-list-icon *ngIf="isFavorite(itemMenu.metadata.name)" (click)="removeFavoriteList(itemMenu.metadata.name)">remove_circle_outline</mat-icon>
       <mat-icon class="add_to_favorite" mat-list-icon *ngIf="!isFavorite(itemMenu.metadata.name)" (click)="addFavoriteList(itemMenu.metadata.name)">add</mat-icon>
       <div  mat-line

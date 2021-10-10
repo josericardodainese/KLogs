@@ -4,6 +4,7 @@
 }
 .side-nav-container {
   display: flex;
+  flex-direction: column;
 }
 
 .menu-active {

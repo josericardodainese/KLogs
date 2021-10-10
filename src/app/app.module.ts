@@ -25,6 +25,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { SnackbarComponent } from './dialogs/snackbar/snackbar.component';
 import {HighlightJsModule} from "ngx-highlight-js";
 import {MatMenuModule} from "@angular/material/menu";
+import { FilterPipe } from './sidenav/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatMenuModule} from "@angular/material/menu";
     SidenavComponent,
     ToolbarComponent,
     SettingsDialogComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    FilterPipe
   ],
     imports: [
         BrowserModule,

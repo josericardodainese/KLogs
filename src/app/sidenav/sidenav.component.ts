@@ -15,6 +15,7 @@ export class SidenavComponent implements OnInit {
   @Output() menuStateOut = new EventEmitter();
   menuList: itemMenu[] = [];
   menuFavoriteList: string[] = [];
+  filterTerm: string = ''
 
   constructor(private service: MicroserviceService,
               private localStorageService: LocalStorageService) {

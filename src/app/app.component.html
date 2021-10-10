@@ -3,7 +3,7 @@
               (nameSpaceStateOut)="reloadMenuByNameSpace()"
               (keydown.escape)="closeSideNav()"></app-toolbar>
 <mat-sidenav-container  class="side-nav-container" (backdropClick)="closeSideNav()">
-  <mat-sidenav #sidenav mode="side" disableClose>
+  <mat-sidenav #sidenav mode="side" disableClose opened>
     <app-sidenav (menuStateOut)="sidenav.toggle()"
                  [shouldGetMenuListIn]="shouldGetMenuList"
                  (idMicroServiceOut)="getLogsFromIdMicroService($event)"

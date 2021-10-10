@@ -57,10 +57,10 @@ export class MicroserviceService {
         );
     }
 
-    return MicroserviceService.getDefault("Sem NameSpace");
+    return MicroserviceService.getDefault("Sem Namespace");
   }
 
-  private static getDefault(msg: string) {
+  public static getDefault(msg: string) {
     const itemMenu: itemMenu = {
       metadata: {
         name: msg
