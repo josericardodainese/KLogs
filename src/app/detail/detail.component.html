@@ -5,5 +5,16 @@
     </code>
   </div>
   <img *ngIf="logDataIn.length == 0" src="assets/images/logo.png" alt="KLogs Logo" class="toolbar-logo-img">
-  <mat-spinner *ngIf="isLoadingIn" diameter="20" class="app-mat-spinner"></mat-spinner>
+  <mat-progress-bar *ngIf="isLoadingIn" mode="indeterminate"></mat-progress-bar>
+  <div class="menuDetail"  *ngIf="logDataIn.length > 0">
+    <button mat-fab color="primary" [matMenuTriggerFor]="detailMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #detailMenu="matMenu" yPosition="above">
+      <button mat-fab color="primary" (click)="downloadLogFile(logDataIn)">
+        <mat-icon>download</mat-icon>
+      </button>
+    </mat-menu>
+  </div>
+
 </div>

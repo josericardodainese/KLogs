@@ -26,6 +26,7 @@ import { SnackbarComponent } from './dialogs/snackbar/snackbar.component';
 import {HighlightJsModule} from "ngx-highlight-js";
 import {MatMenuModule} from "@angular/material/menu";
 import { FilterPipe } from './sidenav/filter.pipe';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { FilterPipe } from './sidenav/filter.pipe';
         ReactiveFormsModule,
         MatSnackBarModule,
         HighlightJsModule,
-        MatMenuModule
+        MatMenuModule,
+        MatProgressBarModule
     ],
   providers: [FormBuilder],
   bootstrap: [AppComponent]
