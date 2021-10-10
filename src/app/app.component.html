@@ -1,6 +1,7 @@
 <app-toolbar  (menuState)="sidenav.toggle()"
               (toolbarMenuStateOut)="toolbarMenuHandle()"
               (nameSpaceStateOut)="reloadMenuByNameSpace()"
+              [selectedApplicationIn]="selectedApplication"
               (keydown.escape)="closeSideNav()"></app-toolbar>
 <mat-sidenav-container  class="side-nav-container" (backdropClick)="closeSideNav()">
   <mat-sidenav #sidenav mode="side" disableClose opened>

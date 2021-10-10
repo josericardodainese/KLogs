@@ -14,6 +14,7 @@ export class AppComponent {
   logData: string[] = [];
   isLoading: boolean = false;
   shouldGetMenuList: boolean = false;
+  selectedApplication: string =  '';
 
   dialogRef: MatDialogRef<SettingsDialogComponent>;
 
@@ -23,6 +24,7 @@ export class AppComponent {
               private dialog: MatDialog) {}
 
   getLogsFromIdMicroService(idMicroService: string) {
+    this.selectedApplication = idMicroService;
     this.isLoading = true;
     this.service.getLogs(idMicroService)
       .subscribe((log => {

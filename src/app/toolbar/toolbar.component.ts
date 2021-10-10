@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LocalStorageService} from "../services/local-storage.service";
 import {Settings} from "../entities/settings";
 import {LocalStorageEnum} from "../entities/LocalStorageEnum";
@@ -19,6 +19,8 @@ export class ToolbarComponent implements OnInit {
   nameSpaceList: itemMenu[];
   settings: Settings;
 
+
+  @Input() selectedApplicationIn: string = '';
 
   @Output() menuState = new EventEmitter();
   @Output() toolbarMenuStateOut = new EventEmitter();
