@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SnackbarComponent } from './snackbar.component';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MAT_SNACK_BAR_DATA, MatSnackBarConfig, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarHarness} from "@angular/material/snack-bar/testing";
 
 describe('SnackbarComponent', () => {
   let component: SnackbarComponent;
@@ -12,7 +13,8 @@ describe('SnackbarComponent', () => {
       imports: [
         MatSnackBarModule,
       ],
-      declarations: [ SnackbarComponent ]
+      declarations: [ SnackbarComponent ],
+      providers: [{ provide : MAT_SNACK_BAR_DATA, useValue : { message: "KLogs" } }]
     })
     .compileComponents();
   });
@@ -25,5 +27,6 @@ describe('SnackbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.data.message).toBe("KLogs")
   });
 });
