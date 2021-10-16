@@ -6,10 +6,6 @@ import {MAT_SNACK_BAR_DATA} from "@angular/material/snack-bar";
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss']
 })
-export class SnackbarComponent implements OnInit {
-
+export class SnackbarComponent {
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) { }
-
-  ngOnInit(): void {
-  }
 }
