@@ -9,7 +9,10 @@
     "build": "ng build Klogs --base-href ./",
     "build:prod": "npm run build -- -c production",
     "ng": "ng",
-    "start": "ng build --base-href ./ && electron-forge start",
+    "start": "ng serve",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "start:electron": "ng build --base-href ./ && electron-forge start",
     "package": "npm run build:prod && electron-forge package",
     "make": "npm run package && electron-forge make",
     "release": "electron-forge publish"
@@ -41,24 +44,21 @@
     "@angular/compiler-cli": "~12.2.0",
     "@electron-forge/cli": "^6.0.0-beta.61",
     "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.61",
     "@electron-forge/maker-rpm": "^6.0.0-beta.61",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.61",
-    "@electron-forge/publisher-github": "^6.0.0-beta.61",
     "@electron-forge/plugin-webpack": "^6.0.0-beta.61",
+    "@electron-forge/publisher-github": "^6.0.0-beta.61",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "@types/jasmine": "~3.8.0",
+    "@types/jest": "^27.0.2",
     "@types/node": "^12.11.1",
     "browser-sync": "^2.27.5",
     "electron": "^15.0.0",
     "electron-installer-windows": "^3.0.0",
-    "jasmine-core": "~3.8.0",
-    "karma": "~6.3.0",
-    "karma-chrome-launcher": "~3.1.0",
+    "jest": "^27.2.5",
+    "jest-preset-angular": "^10.0.1",
     "karma-coverage": "~2.0.3",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.3.5"
   },
   "config": {
@@ -130,6 +130,22 @@
           }
         }
       ]
+    }
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
     }
   }
 }
