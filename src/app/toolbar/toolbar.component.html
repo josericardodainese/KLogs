@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button aria-label="Open Menu" (click)="toggleMenu()">
+  <button (click)="toggleMenu()" aria-label="Open Menu" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
   <span class="app-spacer">KLogs</span>
@@ -9,14 +9,15 @@
   <!--  icones do lado direito da toolbar -->
 
   <div class="app-mat-toolbar-options">
-    <button mat-stroked-button
-            [color]="(selectedNamespace != 'Selecione Um NameSpace') ? 'primary' : 'warn'"
-            [matMenuTriggerFor]="nameSpaceMenu">{{selectedNamespace}}</button>
+    <button [color]="(selectedNamespace != 'Selecione Um NameSpace') ? 'primary' : 'warn'"
+            [matMenuTriggerFor]="nameSpaceMenu"
+            mat-stroked-button>{{selectedNamespace}}</button>
     <mat-menu #nameSpaceMenu="matMenu">
-      <button mat-menu-item *ngFor="let namespace of nameSpaceList" (click)="chageNameSpace(namespace.metadata.name)" >{{namespace.metadata.name}}</button>
+      <button (click)="chageNameSpace(namespace.metadata.name)" *ngFor="let namespace of nameSpaceList"
+              mat-menu-item>{{namespace.metadata.name}}</button>
     </mat-menu>
 
-    <button mat-icon-button class="favorite-icon" aria-label="Settings" (click)="openSettingsDialog()">
+    <button (click)="openSettingsDialog()" aria-label="Settings" class="favorite-icon" mat-icon-button>
       <mat-icon>settings</mat-icon>
     </button>
   </div>

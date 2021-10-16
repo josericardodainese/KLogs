@@ -1,8 +1,17 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {itemMenu} from "../entities/menu-item";
 
 @Pipe({name: 'filter'})
 export class FilterPipe implements PipeTransform {
+
+  private static getMenuListFiltered(itemMenuText: string) {
+    const itemMenu: itemMenu = {
+      metadata: {
+        name: itemMenuText
+      }
+    }
+    return [itemMenu];
+  }
 
   transform(items: itemMenu[], searchText: string): itemMenu[] {
 
@@ -14,19 +23,10 @@ export class FilterPipe implements PipeTransform {
     }
     searchText = searchText.toLocaleLowerCase();
 
-    const itemsFiltered : itemMenu[] =  items.filter(it => {
-      return  it.metadata.name.toLocaleLowerCase().includes(searchText);
+    const itemsFiltered: itemMenu[] = items.filter(it => {
+      return it.metadata.name.toLocaleLowerCase().includes(searchText);
     });
 
     return itemsFiltered.length > 0 ? itemsFiltered : FilterPipe.getMenuListFiltered("Não Encontrado");
-  }
-
-  private static getMenuListFiltered(itemMenuText: string) {
-    const itemMenu: itemMenu = {
-      metadata: {
-        name: itemMenuText
-      }
-    }
-    return [itemMenu];
   }
 }

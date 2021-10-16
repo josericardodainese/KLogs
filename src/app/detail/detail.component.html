@@ -1,9 +1,9 @@
 <div class="detail-container">
-  <div class="detail-container-log" *ngIf="logDataIn.length > 0">
-    <code class="app-log" highlight-js [lang]="'log'">
-      <pre  *ngFor="let line of logDataIn">{{line}}</pre>
+  <div *ngIf="logDataIn.length > 0" class="detail-container-log">
+    <code [lang]="'log'" class="app-log" highlight-js>
+      <pre *ngFor="let line of logDataIn">{{line}}</pre>
     </code>
   </div>
-  <img *ngIf="logDataIn.length == 0" src="assets/images/logo.png" alt="KLogs Logo" class="toolbar-logo-img">
+  <img *ngIf="logDataIn.length == 0" alt="KLogs Logo" class="toolbar-logo-img" src="assets/images/logo.png">
   <mat-progress-bar *ngIf="isLoadingIn" mode="indeterminate"></mat-progress-bar>
 </div>

@@ -14,12 +14,6 @@
   margin-right: 5%;
   justify-content: flex-end;
 }
-::ng-deep {
-  .mat-menu-panel {
-    background: none !important;
-    min-width: 1px !important;
-  }
-}
 
 .detail-container .detail-container-log {
   width: 100%;

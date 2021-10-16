@@ -4,7 +4,7 @@ import {Observable, of, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {itemMenu, MenuItem} from "../entities/menu-item";
 import {LocalStorageService} from "./local-storage.service";
-import {LocalStorageEnum} from "../entities/LocalStorageEnum";
+import {LocalStorageEnum} from "../entities/local-storage-enum";
 import {Settings} from "../entities/settings";
 import {NameSpaceItem} from "../entities/namespace-item";
 
@@ -18,6 +18,18 @@ export class MicroserviceService {
   constructor(private httpClient: HttpClient,
               private localStorageService: LocalStorageService) {
     this.fillConnectionData();
+  }
+
+  public static getDefault(msg: string) {
+    const itemMenu: itemMenu = {
+      metadata: {
+        name: msg
+      }
+    }
+    const menu: MenuItem = {
+      items: [itemMenu]
+    }
+    return of(menu);
   }
 
   getMenuList(): Observable<MenuItem> {
@@ -58,18 +70,6 @@ export class MicroserviceService {
     }
 
     return MicroserviceService.getDefault("Sem Namespace");
-  }
-
-  public static getDefault(msg: string) {
-    const itemMenu: itemMenu = {
-      metadata: {
-        name: msg
-      }
-    }
-    const menu: MenuItem = {
-      items: [itemMenu]
-    }
-    return of(menu);
   }
 
   getLogs(ms: string): Observable<string> {

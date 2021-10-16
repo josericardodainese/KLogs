@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MicroserviceService} from "../services/microservice.service";
 import {itemMenu} from "../entities/menu-item";
 import {LocalStorageService} from "../services/local-storage.service";
-import {LocalStorageEnum} from "../entities/LocalStorageEnum";
+import {LocalStorageEnum} from "../entities/local-storage-enum";
 
 @Component({
   selector: 'app-sidenav',
@@ -16,18 +16,17 @@ export class SidenavComponent implements OnInit {
   menuList: itemMenu[] = [];
   menuFavoriteList: string[] = [];
   filterTerm: string = ''
+  @Output() shouldGetMenuListOut = new EventEmitter();
 
   constructor(private service: MicroserviceService,
               private localStorageService: LocalStorageService) {
 
     const favoriteList = localStorageService.find(LocalStorageEnum.FAV)
 
-    if(favoriteList) {
+    if (favoriteList) {
       this.menuFavoriteList = favoriteList;
     }
   }
-
-  @Output() shouldGetMenuListOut = new EventEmitter();
 
   @Input()
   public set shouldGetMenuListIn(shouldGetMenuListIn: boolean) {
@@ -54,13 +53,13 @@ export class SidenavComponent implements OnInit {
   }
 
   addFavoriteList(ms: string) {
-      this.menuFavoriteList.push(ms);
-      this.localStorageService.add(LocalStorageEnum.FAV, this.menuFavoriteList);
+    this.menuFavoriteList.push(ms);
+    this.localStorageService.add(LocalStorageEnum.FAV, this.menuFavoriteList);
   }
 
   removeFavoriteList(ms: string) {
     const id = this.menuFavoriteList.indexOf(ms);
-    this.menuFavoriteList.splice(id,  1);
+    this.menuFavoriteList.splice(id, 1);
     this.localStorageService.add(LocalStorageEnum.FAV, this.menuFavoriteList);
   }
 

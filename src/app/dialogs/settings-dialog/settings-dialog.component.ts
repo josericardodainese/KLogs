@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageService} from "../../services/local-storage.service";
-import {LocalStorageEnum} from "../../entities/LocalStorageEnum";
+import {LocalStorageEnum} from "../../entities/local-storage-enum";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 import {Settings} from "../../entities/settings";
-import {MatSnackBar, MatSnackBarRef} from "@angular/material/snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackbarComponent} from "../snackbar/snackbar.component";
+import {MessageSnackBar} from "../../entities/message-snack-bar";
+import {ErrorTypeEnum} from "../../entities/error-type-enum";
+import SnackBarUtils from "../../utils/snack-bar-utils";
 
 @Component({
   selector: 'app-settings-dialog',
@@ -26,12 +29,12 @@ export class SettingsDialogComponent implements OnInit {
   ngOnInit(): void {
     const settings: Settings = this.localStorageService.find(LocalStorageEnum.SETTINGS);
 
-    if(settings == undefined) {
+    if (settings == undefined) {
       this.firstSettings = true;
     }
 
     this.settingsForm = this.formBuilder.group({
-      clusterRemoteAddress: [settings ? settings.clusterRemoteAddress : null , [Validators.required]],
+      clusterRemoteAddress: [settings ? settings.clusterRemoteAddress : null, [Validators.required]],
       nameSpace: [settings ? settings.nameSpace : 'default', Validators.required],
       authToken: [settings ? settings.authToken : null, Validators.required]
     });
@@ -42,16 +45,17 @@ export class SettingsDialogComponent implements OnInit {
       return;
     }
     this.localStorageService.add(LocalStorageEnum.SETTINGS, this.settingsForm.value);
-    this.snackBar.openFromComponent(SnackbarComponent, {
-      data: {message: "Configurações Salvas!!!"},
-      horizontalPosition: 'end',
-      verticalPosition: 'bottom',
-      duration: 3000
-    });
+    const message: MessageSnackBar = {message: "Configurações Salvas!!!"};
+    this.openSnackBar(message, ErrorTypeEnum.INFO);
     this.dialogRef.close(this.firstSettings);
   }
 
   closeDialog() {
     this.dialogRef.close(null);
+  }
+
+  openSnackBar(message: MessageSnackBar, type: ErrorTypeEnum) {
+    const snackBarConfig = SnackBarUtils.getSnackBarConfig(message, type);
+    this.snackBar.openFromComponent(SnackbarComponent, snackBarConfig);
   }
 }

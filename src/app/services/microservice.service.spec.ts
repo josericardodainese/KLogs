@@ -16,8 +16,8 @@ describe('MicroserviceService', () => {
         HttpClientModule,
       ],
       providers: [
-        { provide: LocalStorageService, useClass: LocalStorageServiceMock },
-        { provide: HttpClient, useClass: HttpClientMock},
+        {provide: LocalStorageService, useClass: LocalStorageServiceMock},
+        {provide: HttpClient, useClass: HttpClientMock},
         MicroserviceService
       ]
     });

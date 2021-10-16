@@ -1,30 +1,36 @@
 <div class="side-nav-container">
-  <mat-form-field class="example-form-field" appearance="fill">
+  <mat-form-field appearance="fill" class="example-form-field">
     <mat-label>Search</mat-label>
-    <input matInput type="text" [(ngModel)]="filterTerm">
-    <button *ngIf="filterTerm" matSuffix mat-icon-button aria-label="Clear" (click)="filterTerm=''">
+    <input [(ngModel)]="filterTerm" matInput type="text">
+    <button (click)="filterTerm=''" *ngIf="filterTerm" aria-label="Clear" mat-icon-button matSuffix>
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-list>
-    <div mat-subheader>Favorite Application </div>
+    <div mat-subheader>Favorite Application</div>
     <mat-list-item
       *ngFor="let itemMenu of menuFavoriteList">
-      <mat-icon class="remove_from_favorite" mat-list-icon (click)="removeFavoriteList(itemMenu)">remove_circle_outline</mat-icon>
-      <div  mat-line
-            style="cursor: pointer"
-            (click)="showDetail(itemMenu)">{{itemMenu}}
+      <mat-icon (click)="removeFavoriteList(itemMenu)" class="remove_from_favorite" mat-list-icon>
+        remove_circle_outline
+      </mat-icon>
+      <div (click)="showDetail(itemMenu)"
+           mat-line
+           style="cursor: pointer">{{itemMenu}}
       </div>
     </mat-list-item>
 
-    <div mat-subheader>Applications </div>
+    <div mat-subheader>Applications</div>
     <mat-list-item
       *ngFor="let itemMenu of menuList  | filter: filterTerm">
-      <mat-icon class="remove_from_favorite" mat-list-icon *ngIf="isFavorite(itemMenu.metadata.name)" (click)="removeFavoriteList(itemMenu.metadata.name)">remove_circle_outline</mat-icon>
-      <mat-icon class="add_to_favorite" mat-list-icon *ngIf="!isFavorite(itemMenu.metadata.name)" (click)="addFavoriteList(itemMenu.metadata.name)">add</mat-icon>
-      <div  mat-line
-            style="cursor: pointer"
-            (click)="showDetail(itemMenu.metadata.name)">{{itemMenu.metadata.name}}
+      <mat-icon (click)="removeFavoriteList(itemMenu.metadata.name)" *ngIf="isFavorite(itemMenu.metadata.name)" class="remove_from_favorite"
+                mat-list-icon>remove_circle_outline
+      </mat-icon>
+      <mat-icon (click)="addFavoriteList(itemMenu.metadata.name)" *ngIf="!isFavorite(itemMenu.metadata.name)" class="add_to_favorite"
+                mat-list-icon>add
+      </mat-icon>
+      <div (click)="showDetail(itemMenu.metadata.name)"
+           mat-line
+           style="cursor: pointer">{{itemMenu.metadata.name}}
       </div>
     </mat-list-item>
   </mat-list>

@@ -1,8 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SnackbarComponent } from './snackbar.component';
-import {MAT_SNACK_BAR_DATA, MatSnackBarConfig, MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatSnackBarHarness} from "@angular/material/snack-bar/testing";
+import {SnackbarComponent} from './snackbar.component';
+import {MAT_SNACK_BAR_DATA, MatSnackBarModule} from "@angular/material/snack-bar";
 
 describe('SnackbarComponent', () => {
   let component: SnackbarComponent;
@@ -13,10 +12,10 @@ describe('SnackbarComponent', () => {
       imports: [
         MatSnackBarModule,
       ],
-      declarations: [ SnackbarComponent ],
-      providers: [{ provide : MAT_SNACK_BAR_DATA, useValue : { message: "KLogs" } }]
+      declarations: [SnackbarComponent],
+      providers: [{provide: MAT_SNACK_BAR_DATA, useValue: {message: "KLogs"}}]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

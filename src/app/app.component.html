@@ -1,17 +1,18 @@
-<app-toolbar  (menuState)="sidenav.toggle()"
-              (toolbarMenuStateOut)="toolbarMenuHandle()"
-              (nameSpaceStateOut)="reloadMenuByNameSpace()"
-              [selectedApplicationIn]="selectedApplication"
-              (keydown.escape)="closeSideNav()"></app-toolbar>
-<mat-sidenav-container  class="side-nav-container" (backdropClick)="closeSideNav()">
-  <mat-sidenav #sidenav mode="side" disableClose>
-    <app-sidenav (menuStateOut)="sidenav.toggle()"
-                 [shouldGetMenuListIn]="shouldGetMenuList"
-                 (idMicroServiceOut)="getLogsFromIdMicroService($event)"
-                 (shouldGetMenuListOut)="setShouldGetMenuList($event)">
+<app-toolbar (keydown.escape)="closeSideNav()"
+             (menuState)="sidenav.toggle()"
+             (nameSpaceStateOut)="reloadMenuByNameSpace()"
+             (toolbarMenuStateOut)="toolbarMenuHandle()"
+             [isLoadingIn]="isLoading"
+             [selectedApplicationIn]="selectedApplication"></app-toolbar>
+<mat-sidenav-container (backdropClick)="closeSideNav()" class="side-nav-container">
+  <mat-sidenav #sidenav disableClose mode="side">
+    <app-sidenav (idMicroServiceOut)="getLogsFromIdMicroService($event)"
+                 (menuStateOut)="sidenav.toggle()"
+                 (shouldGetMenuListOut)="setShouldGetMenuList($event)"
+                 [shouldGetMenuListIn]="shouldGetMenuList">
     </app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content (click)="closeSideNav()">
-    <app-detail [logDataIn]="logData"  [isLoadingIn]="isLoading"></app-detail>
+    <app-detail [isLoadingIn]="isLoading" [logDataIn]="logData"></app-detail>
   </mat-sidenav-content>
 </mat-sidenav-container>

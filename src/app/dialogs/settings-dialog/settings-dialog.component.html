@@ -1,21 +1,21 @@
 <h1 mat-dialog-title>Settings</h1>
-<form [formGroup]="settingsForm" (submit)="saveSettings()">
+<form (submit)="saveSettings()" [formGroup]="settingsForm">
   <div mat-dialog-content>
     <mat-form-field appearance="outline">
       <mat-label>Cluster Remote Address</mat-label>
-      <input matInput formControlName="clusterRemoteAddress">
+      <input formControlName="clusterRemoteAddress" matInput>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>NameSpace</mat-label>
-      <input matInput formControlName="nameSpace">
+      <input formControlName="nameSpace" matInput>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Auth Token</mat-label>
-      <input matInput formControlName="authToken">
+      <input formControlName="authToken" matInput>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button *ngIf="!this.firstSettings" mat-stroked-button mat-dialog-close>Close</button>
-    <button mat-stroked-button color="primary" type="submit">Save</button>
+    <button *ngIf="!this.firstSettings" mat-dialog-close mat-stroked-button>Close</button>
+    <button color="primary" mat-stroked-button type="submit">Save</button>
   </div>
 </form>

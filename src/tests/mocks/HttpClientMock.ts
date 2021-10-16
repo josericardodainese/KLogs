@@ -1,3 +1,4 @@
 export class HttpClientMock {
-  get() {}
+  get() {
+  }
 }
