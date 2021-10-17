@@ -1,16 +1,33 @@
 import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSelectModule} from "@angular/material/select";
+import {ToolbarComponentMock} from "./tests/mocks/components/ToolbarComponentMock";
+import {TestsModule} from "./tests/tests.module";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatSidenavModule,
+        MatListModule,
+        MatToolbarModule,
+        MatSelectModule,
+        TestsModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+
       ],
+      // providers: [
+      //   {
+      //     provide: ToolbarComponent, useClass: ToolbarComponentMock
+      //   }
+      // ]
     }).compileComponents();
   });
 

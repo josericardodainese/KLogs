@@ -3,8 +3,7 @@ import {fakeAsync, TestBed} from '@angular/core/testing';
 import {MicroserviceService} from './microservice.service';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {LocalStorageService} from "./local-storage.service";
-import {LocalStorageServiceMock} from '../../tests/mocks/LocalStorageServiceMock';
-import {HttpClientMock} from "../../tests/mocks/HttpClientMock";
+import {MockProvider} from "ng-mocks";
 
 describe('MicroserviceService', () => {
   let service: MicroserviceService;
@@ -16,8 +15,8 @@ describe('MicroserviceService', () => {
         HttpClientModule,
       ],
       providers: [
-        {provide: LocalStorageService, useClass: LocalStorageServiceMock},
-        {provide: HttpClient, useClass: HttpClientMock},
+        MockProvider(LocalStorageService),
+        MockProvider(HttpClient),
         MicroserviceService
       ]
     });
