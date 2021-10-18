@@ -5,29 +5,39 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
-import {ToolbarComponentMock} from "./tests/mocks/components/ToolbarComponentMock";
-import {TestsModule} from "./tests/tests.module";
+import {MockComponent, MockModule, MockProvider} from "ng-mocks";
+import {ToolbarComponent} from "./toolbar/toolbar.component";
+import {SidenavComponent} from "./sidenav/sidenav.component";
+import {DetailComponent} from "./detail/detail.component";
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {SnackbarComponent} from "./dialogs/snackbar/snackbar.component";
+import {SettingsDialogComponent} from "./dialogs/settings-dialog/settings-dialog.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
-        MatSidenavModule,
-        MatListModule,
-        MatToolbarModule,
-        MatSelectModule,
-        TestsModule
+        MockModule(RouterTestingModule),
+        MockModule(MatSidenavModule),
+        MockModule(MatListModule),
+        MockModule(MatToolbarModule),
+        MockModule(MatSelectModule),
+        MockModule(MatDialogModule),
+        MockModule(HttpClientModule),
       ],
       declarations: [
-        AppComponent,
-
+        MockComponent(ToolbarComponent),
+        MockComponent(SidenavComponent),
+        MockComponent(DetailComponent),
+        MockComponent(SnackbarComponent),
+        MockComponent(SettingsDialogComponent),
+        AppComponent
       ],
-      // providers: [
-      //   {
-      //     provide: ToolbarComponent, useClass: ToolbarComponentMock
-      //   }
-      // ]
+      providers: [
+        MockProvider(MatSnackBar)
+      ]
     }).compileComponents();
   });
 
@@ -41,12 +51,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Klogs');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Klogs app is running!');
   });
 });

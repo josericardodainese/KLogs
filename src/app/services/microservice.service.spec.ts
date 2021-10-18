@@ -29,9 +29,7 @@ describe('MicroserviceService', () => {
   });
 
   it('should return menu list with success', fakeAsync(() => {
-
     const itemMenu = service.getMenuList().subscribe();
-
     expect(itemMenu).not.toBeNull()
   }));
 });
