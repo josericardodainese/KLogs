@@ -9,10 +9,11 @@
   <!--  icones do lado direito da toolbar -->
 
   <div class="app-mat-toolbar-options">
-    <button [color]="(selectedNamespace != 'Selecione Um NameSpace') ? 'primary' : 'warn'"
+    <button [disabled]="(selectedNamespace == 'Não Foi Possível Carregar Menu')"
+            color="primary"
             [matMenuTriggerFor]="nameSpaceMenu"
             mat-stroked-button>{{selectedNamespace}}</button>
-    <mat-menu #nameSpaceMenu="matMenu">
+    <mat-menu #nameSpaceMenu="matMenu" >
       <button (click)="chageNameSpace(namespace.metadata.name)" *ngFor="let namespace of nameSpaceList"
               mat-menu-item>{{namespace.metadata.name}}</button>
     </mat-menu>

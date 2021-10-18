@@ -2,10 +2,10 @@ export interface metadata {
   name: string;
 }
 
-export interface itemMenu {
+export interface itemNameSpaceMenu {
   metadata: metadata;
 }
 
 export interface NameSpaceItem {
-  items: itemMenu[];
+  items: itemNameSpaceMenu[];
 }

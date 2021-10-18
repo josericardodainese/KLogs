@@ -7,6 +7,7 @@ import {LocalStorageService} from "./local-storage.service";
 import {LocalStorageEnum} from "../entities/local-storage-enum";
 import {Settings} from "../entities/settings";
 import {NameSpaceItem} from "../entities/namespace-item";
+import {MessagesConstants} from "../entities/messages-constants";
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,25 @@ export class MicroserviceService {
     this.fillConnectionData();
   }
 
-  public static getDefault(msg: string) {
+  public static getMenuItemDefault(msg: string) {
     const itemMenu: itemMenu = {
       metadata: {
         name: msg
       }
     }
     const menu: MenuItem = {
+      items: [itemMenu]
+    }
+    return of(menu);
+  }
+
+  public static getNamespaceDefault(msg: string) {
+    const itemMenu: itemMenu = {
+      metadata: {
+        name: msg
+      }
+    }
+    const menu: NameSpaceItem = {
       items: [itemMenu]
     }
     return of(menu);
@@ -48,7 +61,7 @@ export class MicroserviceService {
         );
     }
 
-    return MicroserviceService.getDefault("Nenhum Aplicação Encontrada Verifique as Configurações");
+    return MicroserviceService.getMenuItemDefault(MessagesConstants.MESSAGE_APPLICATION_NOTFOUND);
   }
 
   getNameSpaces(): Observable<NameSpaceItem> {
@@ -68,8 +81,7 @@ export class MicroserviceService {
           catchError(this.handleError)
         );
     }
-
-    return MicroserviceService.getDefault("Sem Namespace");
+    return MicroserviceService.getNamespaceDefault(MessagesConstants.MESSAGE_NAMESPACE_NOTFOUND);
   }
 
   getLogs(ms: string): Observable<string> {

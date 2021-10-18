@@ -3,7 +3,8 @@ import {LocalStorageService} from "../services/local-storage.service";
 import {Settings} from "../entities/settings";
 import {LocalStorageEnum} from "../entities/local-storage-enum";
 import {MicroserviceService} from "../services/microservice.service";
-import {itemMenu} from "../entities/namespace-item";
+import {itemNameSpaceMenu} from "../entities/namespace-item";
+import {MessagesConstants} from "../entities/messages-constants";
 
 @Component({
   selector: 'app-toolbar',
@@ -12,8 +13,8 @@ import {itemMenu} from "../entities/namespace-item";
 })
 export class ToolbarComponent implements OnInit {
 
-  selectedNamespace: string = 'default';
-  nameSpaceList: itemMenu[];
+  selectedNamespace: string = 'Selecione Um NameSpace';
+  nameSpaceList: itemNameSpaceMenu[];
   settings: Settings;
   @Input() selectedApplicationIn: string = '';
   @Input() isLoadingIn: boolean;
@@ -37,6 +38,7 @@ export class ToolbarComponent implements OnInit {
       .subscribe((nameSpaceListReceived => {
         this.nameSpaceList = nameSpaceListReceived.items;
       }), () => {
+        this.selectedNamespace = MessagesConstants.ERROR_REQUEST_NAMESPACE_LIST
         if (this.isLoadingIn) {
           this.isLoadingIn = false;
         }
