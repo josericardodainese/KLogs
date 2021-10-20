@@ -1,3 +1,7 @@
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=LRWRBNXAR7V32)
+
+
 # KLogs
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7 And
@@ -44,3 +48,4 @@ kubectl get secrets -o jsonpath="{.items[?(@.metadata.annotations['kubernetes\.i
 > Screen that show the log view of pod selected
 
 ![image](resources/settings-screen.png)
+
