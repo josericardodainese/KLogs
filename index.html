@@ -2,13 +2,77 @@
 <html lang="pt">
 <head>
     <meta charset="utf-8">
-    <title>Klogs</title>
+    <title>KLogs</title>
     <base href="./">
     <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!--    Bootstrap CSS -->
+    <link href="./css/bootstrap.min.css"
+          rel="stylesheet">
+    <!--    Bootstrap CSS -->
+    <!--    Bootstrap Icons -->
+    <link href="./css/bootstrap-icons/bootstrap-icons.css"
+          rel="stylesheet">
+    <!--    Bootstrap Icons -->
+    <!--    Local CSS -->
+    <link href="css/styles.css" rel="stylesheet"/>
+    <!--    Local CSS -->
 </head>
-<body>
-    <main>
-        KLogs
-    </main>
+<body class="d-flex flex-column h-100">
+<header class="p-2 bg-light text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="./images/logoFull.svg" alt="" width="60">
+            </a>
+        </div>
+    </div>
+</header>
+<main class="main h-100">
+    <div class="flex-shrink-0 px-4 pt-5 my-5 text-center border-bottom">
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Ferramenta para fácil visualização de LOGS em um Cluster Kubernetes.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5 buttons-main">
+                <a href="https://github.com/josericardodainese/KLogs" target="_blank">
+                    <button class="btn btn-primary btn-lg px-4 me-sm-3" type="button">
+                        <i aria-label="GitHub" class="bi-github" role="img"></i>
+                        Veja no Github
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+            <div class="container px-5">
+                <img alt="Primeira Tela do Software" class="img-fluid border rounded-3 shadow-lg mb-4" height="880"
+                     loading="lazy" src="./images/PS-1.png" width="1136">
+            </div>
+        </div>
+    </div>
+   <div class="features">
+
+   </div>
+</main>
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1" href="/">
+                <svg class="bi" height="24" width="30">
+                    <use xlink:href="#bootstrap"/>
+                </svg>
+            </a>
+            <span class="text-muted">&copy; 2021 KLogs</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+                <a class="text-muted" href="https://github.com/josericardodainese/KLogs">
+                    <i class="bi bi-github" role="img"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+</div>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
