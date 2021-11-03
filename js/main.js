@@ -22,7 +22,6 @@ const config = {
         }
     ]
 }
-console.log(navigator.appVersion)
 function getIcon() {
     const icon = document.createElement('i');
     icon.classList.add('bi');
@@ -60,7 +59,7 @@ function getLinkDownloadByOS(assets) {
         button.append(" Download for MAC")
         const assetOS = assets.filter(asset => asset['name'].indexOf(".dmg") != -1)[0];
         link.href = assetOS.browser_download_url
-    } else if (navigator.appVersion.indexOf("Linux") != -1) {
+    } else if (navigator.appVersion.indexOf("Linux x86_64") != -1) {
         icon.classList.add('bi-cloud-download-fill');
         button.appendChild(icon);
         button.append(" Download for Linux")
