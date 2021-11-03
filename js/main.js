@@ -22,7 +22,7 @@ const config = {
         }
     ]
 }
-console.log(navigator.appVersion.indexOf("Mac"))
+console.log(navigator.appVersion)
 function getIcon() {
     const icon = document.createElement('i');
     icon.classList.add('bi');
